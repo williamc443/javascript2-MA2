@@ -1,4 +1,4 @@
-import { book } from "./script.js";
+import { books } from "./script.js";
 
 const bookDetails = document.querySelector(".book-detail");
 
@@ -8,27 +8,27 @@ console.log(bookDetails);
 
 bookDetails.innerHTML = "";
 
-for (let i = 0; i < book.length; i++) {
+for (let i = 0; i < books.length; i++) {
 
 bookDetails.innerHTML += `<div class="book">
-                                    <h4>Name: ${book[i].title}</h4>
-                                    <p>ISBN: ${book[i].isbn}</p>
-                                    <button data-book="${book[i]}">Remove</buttun>
-                                </div>`;
+                                    <h4>Name: ${books[i].title}</h4>
+                                    <p>ISBN: ${books[i].isbn}</p>
+                                    <button data-book="${books[i]}">Remove</buttun>
+                            </div>`;
 
 }
 
-const books = document.querySelectorAll(".book button");
+const removeBookButton = document.querySelectorAll("button");
 
-    books.forEach(function (book) {
-        book.addEventListener("click", handleClick);
+removeBookButton.forEach(function (books) {
+        books.addEventListener("click", handleClick);
     });
 
 
 
 function handleClick(event) {
-    event.target.classList.toggle("complete");
-
+    event.target.classList.toggle("clickevent");
+console.log(event);
 }
 
     // function removeFromList() {
