@@ -1,59 +1,38 @@
-import { books } from "./script.js";
+import { booksArrey } from "./script.js";
 
 const bookDetails = document.querySelector(".book-detail");
-
 
 
 console.log(bookDetails);
 
 bookDetails.innerHTML = "";
 
-for (let i = 0; i < books.length; i++) {
+
+
+for (let i = 0; i < booksArrey.length; i++) {
 
 bookDetails.innerHTML += `<div class="book">
-                                    <h4>Name: ${books[i].title}</h4>
-                                    <p>ISBN: ${books[i].isbn}</p>
-                                    <button data-book="${books[i]}">Remove</buttun>
+                                    <h4>Name: ${booksArrey[i].title}</h4>
+                                    <p>ISBN: ${booksArrey[i].isbn}</p>
+                                    <button id="${booksArrey[i].isbn}" onclick="removeBookButton()">Remove</buttun>
                             </div>`;
 
+                            
 }
 
-const removeBookButton = document.querySelectorAll("button");
+             function removeBookButton() {
 
-removeBookButton.forEach(function (books) {
-        books.addEventListener("click", handleClick);
-    });
+                document.getElementById(`${booksArrey[i].isbn}`);
+
+    const removeBookButton = document.querySelectorAll("button");
+
+removeBookButton.forEach(function (removeBookButton) {
+
+    removeBookButton.addEventListener("onclick", removeBookButton);
+    booksArrey.splice(`${booksArrey[i].isbn}`);
+    bookDetails.innerHTML = "";
 
 
-
-function handleClick(event) {
-    event.target.classList.toggle("clickevent");
-console.log(event);
+});
 }
-
-    // function removeFromList() {
-
-    //     const removeButton = document.querySelectorAll("button")
-    
-    //     removeButton.forEach(function(trash) {
-    //         trash.addEventListener("click", removeFromList);
-    //     });
-    // }
-
-
-function removeFromList(event) {
-    console.log(event);
-
-    const deleteThisBook = event.target.dataset.book;
-
-    const newList = listBook.filter(function (book) {
-        if (deleteThisBook !== book) {
-            return true;
-        }
-    });
-
-    listBooks = newList;
-
-}
-
-
+removeBookButton();
